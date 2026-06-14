@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Cover Letter Generator</title>
+    <link rel="stylesheet" href="./style.css">
+    <!-- PDF.js library to read PDF text on frontend -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+</head>
+<body>
+
+<div class="main-wrapper">
+    <header>
+        <h1>AI Cover Letter Generator</h1>
+        <button id="themeToggle">🌓 Switch Theme</button>
+    </header>
+
+    <div class="content-container">
+        <!-- Input Form Section -->
+        <section class="left-col">
+            <form id="coverLetterForm">
+                <input type="text" id="name" placeholder="Candidate Name" required>
+                <input type="text" id="role" placeholder="Job Role" required>
+                <input type="text" id="company" placeholder="Target Company" required>
+                
+                <textarea id="skills" placeholder="Key Skills (e.g. React, Node.js, Python) - Optional if uploading Resume"></textarea>
+                
+                <!-- NEW: Resume Upload Feature Enabled -->
+                <div class="file-upload-wrapper" style="margin-top: 0.5rem;">
+                    <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-muted);">UPLOAD RESUME (PDF):</label>
+                    <input type="file" id="resumeUpload" accept="application/pdf">
+                </div>
+                
+                <button type="submit" id="submitBtn">Generate Cover Letter</button>
+            </form>
+        </section>
+
+        <!-- Output Section -->
+        <section class="right-col">
+            <h3>Generated Cover Letter:</h3>
+            <div id="output">Your letter will appear here...</div>
+
+           <div class="button-group">
+            <button id="copyBtn">Copy to Clipboard</button>
+            <!-- NEW: Download Button Added -->
+            <button id="downloadBtn" style="background: var(--primary-gradient); color: white; box-shadow: 0 8px 20px -4px rgba(124, 58, 237, 0.3);">Download As Document</button>
+            <button id="clearBtn">Clear All</button>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script src="./app.js"></script>
+</body>
+</html>

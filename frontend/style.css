@@ -1,0 +1,358 @@
+/* ==========================================================================
+   1. PREMIUM CONFIGURATION & DESIGN TOKENS
+   ========================================================================== */
+:root {
+    /* Light Theme - Clean Glassmorphism */
+    --bg-gradient: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
+    --card-bg: rgba(255, 255, 255, 0.45);
+    --card-border: rgba(255, 255, 255, 0.6);
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    
+    /* Input Elements inside Glass */
+    --input-bg: rgba(255, 255, 255, 0.6);
+    --input-border: rgba(255, 255, 255, 0.5);
+    
+    /* Brand Accents */
+    --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    --primary-hover: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+    --accent-success: #059669;
+    --accent-success-hover: #047857;
+    --accent-danger: #ea580c;
+    --accent-danger-hover: #c2410c;
+    
+    --heading-gradient: linear-gradient(135deg, #4f46e5, #ec4899);
+    --focus-ring: rgba(99, 102, 241, 0.25);
+    --shadow-premium: 0 20px 40px -15px rgba(15, 23, 42, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    --shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+    
+    --radius-lg: 24px;
+    --radius-md: 14px;
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.dark-theme {
+    /* Dark Theme - Cyber Glassmorphism */
+    --bg-gradient: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+    --card-bg: rgba(15, 23, 42, 0.45);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    
+    --input-bg: rgba(15, 23, 42, 0.6);
+    --input-border: rgba(255, 255, 255, 0.05);
+    
+    --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    --primary-hover: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    --heading-gradient: linear-gradient(135deg, #f8fafc, #818cf8);
+    
+    --focus-ring: rgba(139, 92, 246, 0.4);
+    --shadow-premium: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+    --shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   2. GLOBAL RESET & BASE STYLES
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1.5rem;
+    transition: background 0.5s ease, color 0.3s ease;
+}
+
+.main-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   3. PREMIUM HEADER ARCHITECTURE
+   ========================================================================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    padding: 0 0.5rem;
+}
+
+h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    background: var(--heading-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: var(--transition-smooth);
+}
+
+#themeToggle {
+    background: var(--card-bg);
+    color: var(--text-main);
+    border: 1px solid var(--card-border);
+    padding: 0.65rem 1.25rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-premium);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: var(--transition-smooth);
+}
+
+#themeToggle:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.6);
+}
+body.dark-theme #themeToggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+   4. LAYOUT DESIGN (2-COLUMN INTEGRATION)
+   ========================================================================== */
+.content-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2.5rem;
+}
+
+@media (max-width: 950px) {
+    .content-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    body { padding: 1.5rem 1rem; }
+}
+
+/* ==========================================================================
+   5. CARDS (GLASSMORPHISM EXTENSION)
+   ========================================================================== */
+.left-col, .right-col {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-premium);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.left-col:hover, .right-col:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.15);
+}
+body.dark-theme .left-col:hover, 
+body.dark-theme .right-col:hover {
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
+}
+
+/* Add an elegant "Cover Letter Input" header directly in CSS */
+.left-col::before {
+    content: "COVER LETTER INPUT";
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    color: var(--text-main);
+}
+
+/* ==========================================================================
+   6. PREMIUM INPUT FORMS & RESUME UPLOAD FIELD
+   ========================================================================== */
+#coverLetterForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    background: var(--input-bg);
+    color: var(--text-main);
+    border: 1px solid var(--input-border);
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: var(--shadow-inset);
+    transition: var(--transition-smooth);
+}
+
+input[type="text"]::placeholder, textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+input[type="text"]:focus, textarea:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.85);
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 4px var(--focus-ring);
+}
+body.dark-theme input[type="text"]:focus, 
+body.dark-theme textarea:focus {
+    background: rgba(15, 23, 42, 0.8);
+    border-color: #6366f1;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 140px;
+    line-height: 1.6;
+}
+
+/* Premium Resume File Input Styling */
+.file-upload-wrapper input[type="file"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--input-bg);
+    border: 1px dashed var(--input-border);
+    border-radius: var(--radius-md);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.file-upload-wrapper input[type="file"]::file-selector-button {
+    background: var(--primary-gradient);
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    margin-right: 1rem;
+    transition: var(--transition-smooth);
+}
+
+.file-upload-wrapper input[type="file"]::file-selector-button:hover {
+    background: var(--primary-hover);
+}
+
+.file-upload-wrapper input[type="file"]:hover {
+    border-color: #4f46e5;
+}
+
+/* Submit Button Customization */
+#coverLetterForm button[type="submit"] {
+    background: var(--primary-gradient);
+    color: #ffffff;
+    border: none;
+    padding: 1.1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    box-shadow: 0 8px 20px -4px rgba(79, 70, 229, 0.4);
+    transition: var(--transition-smooth);
+}
+
+#coverLetterForm button[type="submit"]:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px -4px rgba(79, 70, 229, 0.5);
+}
+
+#coverLetterForm button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ==========================================================================
+   7. OUTPUT SCREEN & CONTROLS
+   ========================================================================== */
+.right-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.right-col h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    color: var(--text-main);
+}
+
+#output {
+    flex-grow: 1;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    min-height: 400px;
+    white-space: pre-wrap;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-main);
+    box-shadow: var(--shadow-inset);
+    overflow-y: auto;
+}
+
+/* Action Buttons Layout */
+.button-group {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.button-group button {
+    flex: 1;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+#copyBtn {
+    background-color: var(--accent-success);
+    color: #ffffff;
+    box-shadow: 0 8px 20px -4px rgba(16, 185, 129, 0.3);
+}
+
+#copyBtn:hover {
+    background-color: var(--accent-success-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px -4px rgba(16, 185, 129, 0.4);
+}
+
+#clearBtn {
+    background: transparent;
+    color: var(--accent-danger);
+    border: 2px solid var(--accent-danger);
+}
+
+#clearBtn:hover {
+    background-color: var(--accent-danger);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px -4px rgba(234, 88, 12, 0.3);
+}
