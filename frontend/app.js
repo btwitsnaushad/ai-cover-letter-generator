@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/api/generate';
+const API_URL = 'https://ai-cover-letter-generator-alp7.onrender.com/api/generate';
 
 // Configure PDF.js Worker
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
